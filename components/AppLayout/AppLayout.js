@@ -10,7 +10,7 @@ export const AppLayout = ({ children, availableTokens, posts, postId }) => {
   return (
     <div className='grid grid-cols-[300px_1fr] h-screen max-h-screen'>
       <div className='flex flex-col text-white overflow-hidden'>
-        <div className='bg-slate-800 px-2'>
+        <div className='bg-slate-900 px-2'>
           <div>
             <Logo />
           </div>
@@ -23,7 +23,7 @@ export const AppLayout = ({ children, availableTokens, posts, postId }) => {
             <span className='pl-1'> {availableTokens} tokens avaliable</span>{' '}
           </Link>
         </div>
-        <div className='px-4 flex-1 overflow-auto bg-gradient-to-b from-slate-800 to-cyan-900'>
+        <div className='px-4 flex-1 overflow-auto bg-gradient-to-b from-slate-900 to-gray-900'>
           {posts.map((post) => {
             return (
               <Link
@@ -38,7 +38,7 @@ export const AppLayout = ({ children, availableTokens, posts, postId }) => {
             );
           })}
         </div>
-        <div className='bg-cyan-900 flex items-center gap-2 border-t border-t-black/50 h20 px-2 py-3'>
+        <div className='bg-gray-900 flex items-center gap-2 border-t border-t-black/50 h20 px-2 py-3'>
           {!!user ? (
             <>
               <div className='min-w-[50px]'>

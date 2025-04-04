@@ -19,6 +19,10 @@ export default withApiAuthRequired(async function handler(req, res) {
     });
 
     const { topic, keywords } = req.body;
+    if (!topic || !keywords || topic.length > 200 || keywords.length > 80) {
+      return res.status(422).json({ error: 'Topic and keywords are required' });
+    }
+
     const cleanResponse = (text) => {
       return text
         .replace(/^```html\n/, '')
@@ -104,7 +108,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       topic,
       keywords: keywords.split(',').map((keyword) => keyword.trim())
     });
-  
+
     res.status(200).json({ postId: post.insertedId });
   } catch (error) {
     console.error('OpenAI API Error:', error.message);

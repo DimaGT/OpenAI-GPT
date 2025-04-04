@@ -1,29 +1,26 @@
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import '../styles/globals.css';
-import {DM_Sans, DM_Serif_Display} from '@next/font/google'
+import { Montserrat } from '@next/font/google';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false; // Prevent Font Awesome from adding its own CSS
 
-const dmSans = DM_Sans({
-    weight: ['400', '500', '700'],
-    subsets: ['latin'],
-    variable: '--font-dm-sans'
-})
-const dmSerifDisplay = DM_Serif_Display({
-    weight: ['400'],
-    subsets: ['latin'],
-    variable: '--font-dm-serif'
-})
+const dmSans = Montserrat({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-montserrat'
+});
 
 
 function MyApp({ Component, pageProps }) {
-    const getLayout = Component.getLayout || ((page) => page);
-    return (
-        <UserProvider>
-            <main className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
-            
-            {getLayout(<Component {...pageProps} />, pageProps)}
-            </main>
-        </UserProvider>
-    );
+  const getLayout = Component.getLayout || ((page) => page);
+  return (
+    <UserProvider>
+      <main className={`${dmSans.variable} `}>
+        {getLayout(<Component {...pageProps} />, pageProps)}
+      </main>
+    </UserProvider>
+  );
 }
 
 export default MyApp;
